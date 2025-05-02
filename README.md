@@ -59,3 +59,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Laraval Saas Projects 
+## First add Database and migrate table by this command 
+ php artisan make:migration "create_tableName"
+
+## After Add Form Field names then add the database collation in laravel as config -> database.php file 
+
+## then database migrate with laraval project by this command 
+php artisan migrate 
+
+## Then Create the task related controller by this command
+php artisan make:controller ControllerName
+
+## use @csrf in laravel form -> it is a blade directive that use for the hidden token validation by the application. It's full form as "Cross Site Request  Forgery".
+
+## when add data/ create data as in database then create a new Model related task by this command
+php artisan make:model Modelname
