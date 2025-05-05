@@ -18,7 +18,9 @@
                 <h4 class="text-center">Edit Task</h4>
               </div>
               <div class="card-body">
-                <form action="{{ route('tasks.create') }}" method="post">
+                <form action="{{ route('tasks.update',$task->id) }}" method="post">
+                  @method('put')
+                  @csrf
                 <div class="mb-3"> 
                   <label for="name" class="form-label h6">Name</label>
                   <input value="{{ old('name', $task->name) }}" type="text" class="@error('name')is-invalid @enderror form-control form-control-lg" name="name" placeholder="Enter Name">

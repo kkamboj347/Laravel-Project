@@ -77,3 +77,10 @@ php artisan make:controller ControllerName
 
 ## when add data/ create data as in database then create a new Model related task by this command
 php artisan make:model Modelname
+
+## after create data in database then show/ read all data in the table form 
+
+## after show all data in table form then work on the edit data from 
+
+
+

@@ -36,7 +36,7 @@ class TaskController extends Controller
         $task->status = $request->status;
         $task->save(); 
 
-        return redirect()->route('tasks.index')->with('success','Product Added Successfully.!!');
+        return redirect()->route('tasks.index')->with('success','Task Added Successfully.!!');
     }
 
     //This method edit or change a task  
@@ -46,12 +46,29 @@ class TaskController extends Controller
     }
 
     //This method update a task 
-    public function update() {
+    public function update($id, Request $request) {
+        $task = Task::findOrFail($id);
+        $validated = $request->validate([
+            'name'=>'required|min:5|max:255',
+            'task'=>'required',
+            'status'=>'required',
+        ]);
+        
+
+        // update data add in database
+        $task->name = $request->name;
+        $task->task = $request->task;
+        $task->status = $request->status;
+        $task->save();
+        return redirect()->route('tasks.index')->with('success', 'Task Update Successfully!');
 
     }
 
     //This method delete the task  
-    public function destroy() {
+    public function destroy($id) {
+        $task = Task::findOrFail($id);
+        $task->delete();
+        return redirect()->route('tasks.index')->with('success','Task Delete Successfully!');
 
     }
 }

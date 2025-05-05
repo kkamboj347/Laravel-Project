@@ -47,7 +47,11 @@
                   <td>{{ $task->status }}</td>
                   <td>
                     <a href="{{ route('tasks.edit',$task->id) }}" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a href="#" onClick="deleteTask({{ $task->id }})" class="btn btn-danger">Delete</a>
+                    <form id="delete-task-from-{{ $task->id }}"action="{{ route('tasks.destroy', $task->id) }}" method="post">
+                    @csrf  
+                    @method('delete')
+                  </form>
                   </td>
                 </tr>
                 @endforeach
@@ -58,5 +62,12 @@
         </div>
       </div>
     </div>
+    <script>
+      function deleteTask(id) {
+        if(confirm("Are you want to delete Task?")) {
+          document.getElementById('delete-task-from-'+id).submit();
+        }
+      }
+    </script>
  </body>
 </html>
