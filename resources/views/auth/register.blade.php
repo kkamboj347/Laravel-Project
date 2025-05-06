@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login Customer</title>
+    <title>Register Customer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   </head>
   <body>
@@ -18,33 +18,40 @@
                 <h4 class="text-center text-white">Register Form</h4>
               </div>
               <div class="card-body">
-                <form method="post">
+                <form action="{{ route('account.processRegister') }}" method="post">
                   @csrf
                 <div class="mb-3"> 
                     <label for="name" class="form-label h6">Name</label>
-                    <input value="{{ old('name') }}" type="name" class="@error('name')is-invalid @enderror form-control form-control-lg" name="name" placeholder="Enter Name">
+                    <input value="{{ old('name') }}" id="name" type="text" class="@error('name')is-invalid @enderror form-control form-control-lg" name="name" placeholder="Enter Name">
                     @error('name')
                       <p class="invalid-feedback">{{ $message }}</p>
                     @enderror
                   </div>
                   <div class="mb-3"> 
                     <label for="email" class="form-label h6">Email</label>
-                    <input value="{{ old('email') }}" type="email" class="@error('email')is-invalid @enderror form-control form-control-lg" name="email" placeholder="Enter Email">
+                    <input value="{{ old('email') }}" id="email" type="email" class="@error('email')is-invalid @enderror form-control form-control-lg" name="email" placeholder="Enter Email">
                     @error('email')
                       <p class="invalid-feedback">{{ $message }}</p>
                     @enderror
                   </div>
                   <div class="mb-3"> 
                     <label for="email_verified_at" class="form-label h6">Email Verified At</label>
-                    <input value="{{ old('email_verified_at') }}" type="email" class="@error('email_verified_at')is-invalid @enderror form-control form-control-lg" name="email_verified_at" placeholder="Enter Email Verified">
+                    <input value="{{ old('email_verified_at') }}" id="email_verified_at" type="text" class="@error('email_verified_at')is-invalid @enderror form-control form-control-lg" name="email_verified_at" placeholder="Enter Email Verified">
                     @error('email_verified_at')
                       <p class="invalid-feedback">{{ $message }}</p>
                     @enderror
                   </div>
                   <div class="mb-3"> 
                     <label for="password" class="form-label h6">Password</label>
-                    <input value="{{ old('password') }}" type="password" class="@error('password')is-invalid @enderror form-control form-control-lg" name="password" placeholder="Enter Password">
+                    <input value="{{ old('password') }}" id="password" type="password" class="@error('password')is-invalid @enderror form-control form-control-lg" name="password" placeholder="Enter Password">
                     @error('password')
+                      <p class="invalid-feedback">{{ $message }}</p>
+                    @enderror
+                  </div>
+                  <div class="mb-3"> 
+                    <label for="confirm_password" class="form-label h6">Confirm Password</label>
+                    <input value="{{ old('confirm_password') }}" id="confirm_password" type="password" class="@error('confirm_password')is-invalid @enderror form-control form-control-lg" name="confirm_password" placeholder="Enter Password">
+                    @error('confirm_password')
                       <p class="invalid-feedback">{{ $message }}</p>
                     @enderror
                   </div>
